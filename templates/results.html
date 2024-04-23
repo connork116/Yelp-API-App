@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Search Results</h1>
+        <div class="mt-3">
+            <a href="/" class="btn btn-primary">Back</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Rating</th>
+                    <th>Price</th>
+                    <th>Phone</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for restaurant in restaurants %}
+                <tr>
+                    <td>{{ restaurant.name }}</td>
+                    <td>{{ restaurant.location.address1 }}</td>
+                    <td>{{ restaurant.rating }}</td>
+                    <td>{{ restaurant.price or 'N/A' }}</td>
+                    <td>{{ restaurant.phone or 'N/A' }}</td>
+                    <td><a href="https://www.google.com/maps/dir/{{ restaurant.location.address1 }}" target="_blank">Get
+                            Directions</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
